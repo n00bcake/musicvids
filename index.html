@@ -21,7 +21,9 @@
 			var videoPlayer = videojs('#video');
 			// pick a new random video
 		    function refreshVideo() {
-		    	videoPlayer.src({type: 'video/x-flv', src: makeVideoUrl(_.sample(names))});
+		    	var name = _.sample(names);
+		    	videoPlayer.src({type: 'video/x-flv', src: makeVideoUrl(name)});
+		    	$('#name').html(name);
 		    	videoPlayer.load();
 		    	videoPlayer.play();
 			}
@@ -36,5 +38,5 @@
         data-setup='{"controls" : true, "autoplay" : true, "preload" : "auto"}'>
         <source id="flv" src="http://80smusicvids.com/vid/A_Flock_Of_Seagulls_-_I_Ran.flv" type="video/x-flv">
     </video>
-
+<div id="name"></div>
 </body>
